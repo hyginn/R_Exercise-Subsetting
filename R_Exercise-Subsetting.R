@@ -7,7 +7,7 @@
 # (C) copyrighted material. Do not share without permission.
 # ====================================================================
 
-"A significant portion of your efforts in any project will be spent on preparing data for analysis. This includes reading data from various sources, preprocessing it, and extracting subsets of interest. R has powerful mechanisms that support these tasks."
+"A significant portion of your efforts in any project will be spent on preparing data for analysis. This includes reading data from various sources, preprocessing it, and extracting subsets of interest. R has powerful functions that support these tasks."
 
 
 # ====================================================================
