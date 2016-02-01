@@ -61,7 +61,7 @@ dat[ , 3]  # empty rows, use all of them
 "If you want a particular set of row and columns, pass a vector of positive integers."
 dat[c(2, 3), c(1, 2, 3)]
 
-'Any function that returns a vector of integers can be used. Most frequently we use the range operator ":"  '
+'Any function that returns a vector of integers can be used. Most frequently we use the range operator ":" . Retrieving ranges of rows and/or columns from a matrix or data frame is also called "slicing".'
 
 dat[1:4, 1:3]
 dat[4:1, 1:3]   # same in reverse order
@@ -79,10 +79,12 @@ dat[sample(1:N, 3), 1:3]
 "... or sort the dataframe. Sorting requires the order() function, not sort()."
 
 sort(dat[ , 2])    # ... gives us the sorted values
-order(dat[ , 2])   # ... tells us in which row they are
 
+    order(dat[ , 2])   # ... tells us in which row the sotrted values are
 dat[order(dat[ , 2]), 1:3]  # ordered by number of legs
 dat[order(dat[ , 1]), 1:3]  # ordered by lexical order of names
+
+"Note: I am indenting expressions so you can first evaluate the expressions individually, then see how they fit into the brackets to subset the data."
 
 
 # ==== Negative indices
@@ -116,7 +118,7 @@ dat[dat[ , 2] > 4, 1:3]
     dat[ , 4] > 0 & dat[ , 5] < 0
 dat[dat[ , 4] > 0 & dat[ , 5] < 0, ]
 
-"In this context, the any() and all() functions may be useful. But take care - you can't simply apply them to a range of columns: that would apply the condition to all elements of a selection at once. You need to use the apply() function to first return a vector. apply()'s second argument switches between row-wise and column-wise evaluation."
+"In this context, the any() and all() functions may be useful. But take care - you can't simply apply them to a range of columns: that would apply the condition to all elements of a selection at once. You need to use the apply() function to first return a vector. apply()'s second argument switches between row-wise and column-wise evaluation. Here, 1 means operate on rows."
 
     apply(dat[ , 4:8], 1, max)           # row-wise, fetch the maximum
     apply(dat[ , 4:8], 1, max) > 1       # max() > 1 ?
@@ -139,7 +141,7 @@ dat[apply(dat[ , 4:8], 1, function(x){all(x < 0.5)}), ]
 
 "The function grep(), and the %in% operator can be used to subset via string matching:"
 
-    grep("r", dat[ , 3])         # types that contain "r"
+    grep("r", dat[ , 3])          # types that contain "r"
 dat[grep("r", dat[ , 3]), 1:3]
 
     grep("^c", dat[ , 3])         # types that begin with "c"
@@ -183,6 +185,12 @@ dat$"legs"[1:3]  # works, but isn't necessary
 dat[1:3, legs]   # this returns an error - hopefully; but if for any
                  # reason the object DOES exist, you'll get an un-
                  # expected result. Know when to quote!
+
+
+"Three more functions that I use all the time for data manipulation:"
+?which
+?unique
+?duplicated
 
 
 
